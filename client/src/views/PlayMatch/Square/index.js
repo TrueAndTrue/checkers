@@ -12,9 +12,58 @@ const Square = ({value, index, setCurrentSelect, currentSelect, boardState, setM
       setCurrentSelect(index);
     }
 
-    // player 1 logic
+    // piece taking logic
 
-    else if (value === 0 && currentSelect && playerTurn) {
+    // player 1
+
+    if (value === 0 && currentSelect && playerTurn) {
+      if (index[0] === (currentSelect[0] - 2)) {
+        if (currentSelect[1] === (index[1] + 2)) {
+          boardState[index[0]][index[1]] = 1;
+          boardState[index[0] + 1][index[1] + 1] = 0;
+          boardState[currentSelect[0]][currentSelect[1]] = 0
+          setMatrix(boardState);
+          setCurrentSelect([]);
+          setPlayerTurn(!playerTurn)
+        }
+        else if (currentSelect[1] === (index[1] - 2)) {
+          boardState[index[0]][index[1]] = 1;
+          boardState[index[0] + 1][index[1] - 1] = 0;
+          boardState[currentSelect[0]][currentSelect[1]] = 0
+          setMatrix(boardState);
+          setCurrentSelect([]);
+          setPlayerTurn(!playerTurn)
+        }
+      }
+    }
+
+    // player 2 
+
+    if (value === 0 && currentSelect && !playerTurn) {
+      if (index[0] === (currentSelect[0] + 2)) {
+        if (currentSelect[1] === (index[1] + 2)) {
+          boardState[index[0]][index[1]] = 2;
+          boardState[index[0] - 1][index[1] + 1] = 0;
+          boardState[currentSelect[0]][currentSelect[1]] = 0
+          setMatrix(boardState);
+          setCurrentSelect([]);
+          setPlayerTurn(!playerTurn)
+        }
+        else if (currentSelect[1] === (index[1] - 2)) {
+          boardState[index[0]][index[1]] = 2;
+          boardState[index[0] - 1][index[1] - 1] = 0;
+          boardState[currentSelect[0]][currentSelect[1]] = 0
+          setMatrix(boardState);
+          setCurrentSelect([]);
+          setPlayerTurn(!playerTurn)
+        }
+      }
+    }
+
+
+    // player 1 movement logic
+
+    if (value === 0 && currentSelect && playerTurn) {
       if (index[0] === (currentSelect[0] - 1) && (currentSelect[1] === (index[1] + 1) || currentSelect[1] === (index[1] - 1))) {
         boardState[index[0]][index[1]] = 1;
         boardState[currentSelect[0]][currentSelect[1]] = 0
@@ -24,7 +73,7 @@ const Square = ({value, index, setCurrentSelect, currentSelect, boardState, setM
       }
     }
 
-    // player 2 logic
+    // player 2 movement logic
 
     else if (value === 0 && currentSelect && !playerTurn) {
       if (index[0] === (currentSelect[0] + 1) && (currentSelect[1] === (index[1] + 1) || currentSelect[1] === (index[1] - 1))) {
