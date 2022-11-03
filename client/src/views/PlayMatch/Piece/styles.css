@@ -1,0 +1,28 @@
+.piece {
+  width: 100%;
+  height: 100%;
+}
+
+.piece-img {
+  width: 65%;
+  height: 100%;
+}
+
+
+.piece-img.red {
+  margin-top: 5%;
+  width: 50%;
+  height: 80%;
+}
+
+.piece-img.redking {
+  margin-top: 6%;
+  width: 50%;
+  height: 75%;
+}
+
+.piece-img.blackking {
+  margin-top: 6%;
+  width: 50%;
+  height: 75%;
+}
