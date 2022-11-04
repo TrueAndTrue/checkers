@@ -45,7 +45,6 @@ const Square = ({
       (currentSelect[1] === index[1] + 1 || currentSelect[1] === index[1] - 1) &&
       boardState[currentSelect[0]][currentSelect[1]] !== 3
     ) {
-      console.log("player 1 move");
       boardState[index[0]][index[1]] = 1;
       boardState[currentSelect[0]][currentSelect[1]] = 0;
       setMatrix(boardState);
@@ -61,7 +60,6 @@ const Square = ({
       boardState[currentSelect[0]][currentSelect[1]] === 3 &&
       (currentSelect[1] === index[1] + 1 || currentSelect[1] === index[1] - 1)
     ) {
-      console.log("player1 move king");
       if (
         (index[0] === currentSelect[0] - 1 ||
           index[0] === currentSelect[0] + 1) &&
@@ -83,7 +81,6 @@ const Square = ({
       boardState[currentSelect[0]][currentSelect[1]] === 1 &&
       (currentSelect[1] === index[1] + 2 || currentSelect[1] === index[1] - 2)
     ) {
-      console.log("piece take logic player1");
       if (index[0] === currentSelect[0] - 2) {
         if (currentSelect[1] === index[1] + 2) {
           boardState[index[0]][index[1]] = 1;
@@ -112,10 +109,8 @@ const Square = ({
       playerTurn &&
       boardState[currentSelect[0]][currentSelect[1]] === 3
     ) {
-      console.log("king take logic", currentSelect);
       if (index[0] === currentSelect[0] + 2) {
         if (index[1] === currentSelect[1] + 2) {
-          console.log(index[0], index[1])
           boardState[index[0]][index[1]] = 3;
           boardState[index[0] - 1][index[1] - 1] = 0;
           boardState[currentSelect[0]][currentSelect[1]] = 0;
@@ -145,7 +140,6 @@ const Square = ({
           boardState[index[0]][index[1]] = 3;
           boardState[index[0] + 1][index[1] + 1] = 0;
           boardState[currentSelect[0]][currentSelect[1]] = 0;
-          console.log(boardState);
           setMatrix(boardState);
           setCurrentSelect([]);
           setPlayerTurn(!playerTurn);
@@ -164,7 +158,6 @@ const Square = ({
       (currentSelect[1] === index[1] + 1 || currentSelect[1] === index[1] - 1) &&
       boardState[currentSelect[0]][currentSelect[1]] !== 4
     ) {
-      console.log("player 2 move");
       boardState[index[0]][index[1]] = 2;
       boardState[currentSelect[0]][currentSelect[1]] = 0;
       setMatrix(boardState);
@@ -180,7 +173,6 @@ const Square = ({
       boardState[currentSelect[0]][currentSelect[1]] === 4 &&
       (currentSelect[1] === index[1] + 1 || currentSelect[1] === index[1] - 1)
     ) {
-      console.log("player2 move king");
       if (
         (index[0] === currentSelect[0] - 1 ||
           index[0] === currentSelect[0] + 1) &&
@@ -202,7 +194,6 @@ const Square = ({
       boardState[currentSelect[0]][currentSelect[1]] === 2 &&
       (currentSelect[1] === index[1] + 2 || currentSelect[1] === index[1] - 2)
     ) {
-      console.log("piece take logic player1");
       if (index[0] === currentSelect[0] + 2) {
         if (currentSelect[1] === index[1] + 2) {
           boardState[index[0]][index[1]] = 2;
@@ -231,10 +222,8 @@ const Square = ({
       !playerTurn &&
       boardState[currentSelect[0]][currentSelect[1]] === 4
     ) {
-      console.log("king take logic", currentSelect);
       if (index[0] === currentSelect[0] + 2) {
         if (index[1] === currentSelect[1] + 2) {
-          console.log(index[0], index[1])
           boardState[index[0]][index[1]] = 4;
           boardState[index[0] - 1][index[1] - 1] = 0;
           boardState[currentSelect[0]][currentSelect[1]] = 0;
@@ -264,7 +253,6 @@ const Square = ({
           boardState[index[0]][index[1]] = 4;
           boardState[index[0] + 1][index[1] + 1] = 0;
           boardState[currentSelect[0]][currentSelect[1]] = 0;
-          console.log(boardState);
           setMatrix(boardState);
           setCurrentSelect([]);
           setPlayerTurn(!playerTurn);
@@ -292,11 +280,9 @@ const Square = ({
 
   useEffect(() => {
     if (value === 1 && index[0] === 0) {
-      console.log("KING TIME");
       boardState[index[0]][index[1]] = 3;
       setMatrix(boardState);
     } else if (value === 2 && index[0] === boardState.length - 1) {
-      console.log("KING TIME (for player 2)");
       boardState[index[0]][index[1]] = 4;
       setMatrix(boardState);
     }

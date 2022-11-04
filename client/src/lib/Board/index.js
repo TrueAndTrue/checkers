@@ -12,6 +12,10 @@ const Board = () => {
   const [p2Pieces, setP2Pieces] = useState(12);
   const [winnerText, setWinnerText] = useState("");
 
+  const handleReset = () => {
+    window.location.reload();
+  }
+
   useEffect(() => {
     if (p2Pieces === 0) {
       setWinnerText("Player 1 has won!");
@@ -33,6 +37,7 @@ const Board = () => {
         }
         <p>Player 2 pieces: {p2Pieces}</p>
       </div>
+      {winnerText.length > 0 && <button className="reset-button" onClick={handleReset}>RESET</button>}
       <div className="board-container">
         <div className="inner-board">
           {matrix.map((arr, i) => {

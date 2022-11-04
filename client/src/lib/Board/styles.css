@@ -23,8 +23,8 @@
 }
 
 .board-page-container {
-  width: 90vw;
-  height: 90vh;
+  width: 90%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
