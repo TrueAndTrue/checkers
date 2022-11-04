@@ -1,8 +1,9 @@
 import './styles.css'
-import red from '../../../assets/piecered.png';
-import black from '../../../assets/pieceblack.png';
-import kingblack from '../../../assets/kingblack.png'
-import kingred from '../../../assets/kingred.png';
+import red from '../assets/piecered.png';
+import black from '../assets/pieceblack.png';
+import kingblack from '../assets/kingblack.png'
+import kingred from '../assets/kingred.png';
+import React from 'react';
 
 const Piece = ( { val } ) => {
 

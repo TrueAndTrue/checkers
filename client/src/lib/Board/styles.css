@@ -1,0 +1,41 @@
+.board-container {
+
+  max-width: 80%;
+  max-height: 80%;
+  min-width: 80%;
+  min-height: 80%;
+  background-color: rgb(165, 94, 28);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border: 15px solid rgb(116, 57, 2);
+  border-image: url('../assets/brownwood.jpeg') 30 round; 
+}
+
+.inner-board {
+  width: 99.1%;
+  height: 99.1%;
+  background: url('../assets/wood.jpg');
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.board-page-container {
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.player-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: xx-large;
+  font-weight: 700;
+  margin-top: 2%;
+}

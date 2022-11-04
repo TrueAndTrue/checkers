@@ -1,11 +1,11 @@
 import './App.css';
-import PlayMatch from './views/PlayMatch';
+
 
 
 function App() {
   return (
     <div className="app-container">
-     <PlayMatch />
+     hi
     </div>
   );
 }

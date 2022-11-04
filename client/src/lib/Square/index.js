@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import "./styles.css";
 import Piece from "../Piece";
-import darkwood from '../../../assets/brownwood.jpeg'
+import darkwood from '../assets/brownwood.jpeg'
+import React from 'react';
 
 const Square = ({
   value,

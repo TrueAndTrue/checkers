@@ -2,6 +2,7 @@ import Square from "../Square";
 import "./styles.css";
 import { useEffect, useState } from "react";
 import board from "./mockBoard";
+import React from 'react';
 
 const Board = () => {
   const [currentSelect, setCurrentSelect] = useState([]);
@@ -23,10 +24,15 @@ const Board = () => {
     <div className="board-page-container">
       <div className="player-info">
         <p>Player 1 pieces: {p1Pieces}</p>
-        <header>{playerTurn ? "Player 1 turn" : "Player 2 turn"}</header>
+        {
+          winnerText.length > 0 
+          ? <header>{winnerText}</header> 
+          : <header>{playerTurn ? "Player 1 turn" : "Player 2 turn"}</header> 
+
+
+        }
         <p>Player 2 pieces: {p2Pieces}</p>
       </div>
-      <div>{winnerText}</div>
       <div className="board-container">
         <div className="inner-board">
           {matrix.map((arr, i) => {
