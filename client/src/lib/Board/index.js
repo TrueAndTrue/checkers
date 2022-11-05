@@ -12,6 +12,7 @@ const Board = ({boardStyle}) => {
   const [p2Pieces, setP2Pieces] = useState(12);
   const [winnerText, setWinnerText] = useState("");
 
+
   const container  = useRef();
   const innerContainer = useRef();
 
@@ -24,21 +25,16 @@ const Board = ({boardStyle}) => {
 
   useEffect(() => {
 
-    
-    
-    
-    if (boardStyle.boardTheme === 'b/w') {
+    if (boardStyle && boardStyle.boardTheme === 'b/w') {
       
       container.current.style.backgroundColor = 'transparent'
       container.current.style.border = '5px solid black'
 
-  
     }
     
-    
     let borderProps;
-    if (boardStyle.board && (boardStyle.board.borderColor || boardStyle.board.borderSize)) {
-      borderProps = `${boardStyle.board.borderSize ? boardStyle.board.borderSize : '5px'} solid ${boardStyle.board.borderColor ? boardStyle.board.borderColor : 'white'}`
+    if (boardStyle && boardStyle.border && (boardStyle.border.borderColor || boardStyle.border.borderSize)) {
+      borderProps = `${boardStyle.border.borderSize ? boardStyle.border.borderSize : '5px'} solid ${boardStyle.border.borderColor ? boardStyle.border.borderColor : 'white'}`
       container.current.style.border = borderProps ? borderProps : 'none';
     }
   }, [])
@@ -53,7 +49,7 @@ const Board = ({boardStyle}) => {
 
   return (
     <div className="board-page-container">
-      <div className="player-info">
+      {(boardStyle && boardStyle.text !== 'no-text') && <div className="player-info">
         <p>Player 1 pieces: {p1Pieces}</p>
         {
           winnerText.length > 0 
@@ -63,7 +59,7 @@ const Board = ({boardStyle}) => {
 
         }
         <p>Player 2 pieces: {p2Pieces}</p>
-      </div>
+      </div>}
       {winnerText.length > 0 && <button className="reset-button" onClick={handleReset}>RESET</button>}
       <div className="board-container" ref={container}>
         <div className="inner-board" ref={innerContainer}>

@@ -272,7 +272,7 @@ const Square = ({
 
   
   
-    if (boardStyle.boardTheme === 'b/w') {
+    if (boardStyle && boardStyle.boardTheme === 'b/w') {
       console.log('lol')
       if (currentSelect[0] === index[0] && currentSelect[1] === index[1]) {
         if (playerTurn) buttonElement.current.style.backgroundColor = "blue";
@@ -305,7 +305,7 @@ const Square = ({
         }
       }
       
-      if (boardStyle.boardTiles) {
+      if (boardStyle && boardStyle.boardTiles) {
     
     
         if (currentSelect[0] === index[0] && currentSelect[1] === index[1]) {
@@ -341,7 +341,7 @@ const Square = ({
       onClick={handleClick}
       ref={buttonElement}
     >
-      <Piece val={value} />
+      <Piece val={value} boardStyle={boardStyle}/>
     </button>
   );
 };
