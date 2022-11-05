@@ -1,10 +1,10 @@
 import Square from "../Square";
 import "./styles.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import board from "./mockBoard";
 import React from 'react';
 
-const Board = () => {
+const Board = ({boardStyle}) => {
   const [currentSelect, setCurrentSelect] = useState([]);
   const [playerTurn, setPlayerTurn] = useState(true);
   const [matrix, setMatrix] = useState(board);
@@ -12,9 +12,36 @@ const Board = () => {
   const [p2Pieces, setP2Pieces] = useState(12);
   const [winnerText, setWinnerText] = useState("");
 
+  const container  = useRef();
+  const innerContainer = useRef();
+
   const handleReset = () => {
     window.location.reload();
   }
+
+  // boardStyle.board.borderColor = ''
+  // borderStyle.board.borderSize = ''
+
+  useEffect(() => {
+
+    
+    
+    
+    if (boardStyle.boardTheme === 'b/w') {
+      
+      container.current.style.backgroundColor = 'transparent'
+      container.current.style.border = '5px solid black'
+
+  
+    }
+    
+    
+    let borderProps;
+    if (boardStyle.board && (boardStyle.board.borderColor || boardStyle.board.borderSize)) {
+      borderProps = `${boardStyle.board.borderSize ? boardStyle.board.borderSize : '5px'} solid ${boardStyle.board.borderColor ? boardStyle.board.borderColor : 'white'}`
+      container.current.style.border = borderProps ? borderProps : 'none';
+    }
+  }, [])
 
   useEffect(() => {
     if (p2Pieces === 0) {
@@ -38,8 +65,8 @@ const Board = () => {
         <p>Player 2 pieces: {p2Pieces}</p>
       </div>
       {winnerText.length > 0 && <button className="reset-button" onClick={handleReset}>RESET</button>}
-      <div className="board-container">
-        <div className="inner-board">
+      <div className="board-container" ref={container}>
+        <div className="inner-board" ref={innerContainer}>
           {matrix.map((arr, i) => {
             return arr.map((square, j) => {
               return (
@@ -56,6 +83,7 @@ const Board = () => {
                   p2Pieces={p2Pieces}
                   setP1Pieces={setP1Pieces}
                   setP2Pieces={setP2Pieces}
+                  boardStyle={boardStyle}
                 />
               );
             });

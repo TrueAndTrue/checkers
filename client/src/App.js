@@ -1,11 +1,11 @@
 import './App.css';
-
+import Board from './lib/Board';
 
 
 function App() {
   return (
     <div className="app-container">
-     hi
+      <Board boardStyle={{ boardTheme: 'b/w' }}/>
     </div>
   );
 }

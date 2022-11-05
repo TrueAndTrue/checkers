@@ -2,21 +2,30 @@
   "name": "checkers-game",
   "description": "A functional game of checkers",
   "author": "shadowlander",
-  "keywords": ["react", "components", "checkers", "game"],
-  "version": "2.0.0",
+  "keywords": [
+    "react",
+    "components",
+    "checkers",
+    "game"
+  ],
+  "version": "2.1.0",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "files": [ "dist", "README.md" ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "repository": {
-      "type": "git",
-      "url": "https://github.com/TrueAndTrue/checkers"
+    "type": "git",
+    "url": "https://github.com/TrueAndTrue/checkers"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",

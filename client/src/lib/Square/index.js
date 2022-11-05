@@ -17,6 +17,7 @@ const Square = ({
   p2Pieces,
   setP1Pieces,
   setP2Pieces,
+  boardStyle
 }) => {
   const buttonElement = useRef();
 
@@ -263,30 +264,76 @@ const Square = ({
   };
 
   useEffect(() => {
-    if (currentSelect[0] === index[0] && currentSelect[1] === index[1]) {
-      if (playerTurn) buttonElement.current.style.backgroundColor = "white";
-      else if ((playerTurn && value === 3) || (!playerTurn && value === 4))
-        buttonElement.current.style.backgroundColor = "yellow";
-      else buttonElement.current.style.backgroundColor = "green";
-    } else if (
-      (index[0] % 2 === 0 && index[1] % 2 === 0) ||
-      (index[0] % 2 !== 0 && index[1] % 2 !== 0)
-    ) {
-      buttonElement.current.style.backgroundColor = "transparent";
-    } else {
-      buttonElement.current.style.background = `url(${darkwood}) 10px 10px repeat`;
-    }
-  }, [currentSelect]);
 
-  useEffect(() => {
-    if (value === 1 && index[0] === 0) {
-      boardState[index[0]][index[1]] = 3;
-      setMatrix(boardState);
-    } else if (value === 2 && index[0] === boardState.length - 1) {
-      boardState[index[0]][index[1]] = 4;
-      setMatrix(boardState);
-    }
-  }, [boardState]);
+    // p1 light up
+    // p2 light up
+    // diag 1
+    // diag 2
+
+  
+  
+    if (boardStyle.boardTheme === 'b/w') {
+      console.log('lol')
+      if (currentSelect[0] === index[0] && currentSelect[1] === index[1]) {
+        if (playerTurn) buttonElement.current.style.backgroundColor = "blue";
+        else if ((playerTurn && value === 3) || (!playerTurn && value === 4))
+        buttonElement.current.style.backgroundColor = "yellow";
+        else buttonElement.current.style.backgroundColor = "green";
+      } else if (
+        (index[0] % 2 === 0 && index[1] % 2 === 0) ||
+        (index[0] % 2 !== 0 && index[1] % 2 !== 0)
+        ) {
+          buttonElement.current.style.backgroundColor = "white";
+        } else {
+          buttonElement.current.style.background = `black`;
+        }
+      }
+      
+      else {
+        if (currentSelect[0] === index[0] && currentSelect[1] === index[1]) {
+          if (playerTurn) buttonElement.current.style.backgroundColor = "white";
+        else if ((playerTurn && value === 3) || (!playerTurn && value === 4))
+        buttonElement.current.style.backgroundColor = "yellow";
+        else buttonElement.current.style.backgroundColor = "green";
+      } else if (
+        (index[0] % 2 === 0 && index[1] % 2 === 0) ||
+        (index[0] % 2 !== 0 && index[1] % 2 !== 0)
+        ) {
+          buttonElement.current.style.backgroundColor = "transparent";
+        } else {
+          buttonElement.current.style.background = `url(${darkwood}) 10px 10px repeat`;
+        }
+      }
+      
+      if (boardStyle.boardTiles) {
+    
+    
+        if (currentSelect[0] === index[0] && currentSelect[1] === index[1]) {
+          if (playerTurn && boardStyle.boardTiles.p1) buttonElement.current.style.backgroundColor = boardStyle.boardTiles.p1;
+          else {
+            if (boardStyle.boardTiles.p2) buttonElement.current.style.backgroundColor = boardStyle.boardTiles.p2;
+          }
+        } else if (
+          ((index[0] % 2 === 0 && index[1] % 2 === 0) ||
+          (index[0] % 2 !== 0 && index[1] % 2 !== 0)) && 
+          boardStyle.boardTiles.diag1
+        ) {
+          buttonElement.current.style.backgroundColor = boardStyle.boardTiles.diag1;
+        } else {
+          if (boardStyle.boardTiles.diag1) buttonElement.current.style.background = boardStyle.boardTiles.diag2;
+        }
+      }
+    }, [currentSelect]);
+    
+    useEffect(() => {
+      if (value === 1 && index[0] === 0) {
+        boardState[index[0]][index[1]] = 3;
+        setMatrix(boardState);
+      } else if (value === 2 && index[0] === boardState.length - 1) {
+        boardState[index[0]][index[1]] = 4;
+        setMatrix(boardState);
+      }
+    }, [boardState]);
 
   return (
     <button

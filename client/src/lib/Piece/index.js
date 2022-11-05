@@ -1,12 +1,17 @@
 import './styles.css'
 import red from '../assets/piecered.png';
 import black from '../assets/pieceblack.png';
-import kingblack from '../assets/kingblack.png'
+import brown from '../assets/piecebrown.png';
+import kingblack from '../assets/kingblack.png';
 import kingred from '../assets/kingred.png';
+import kingbrown from '../assets/kingbrown.png';
 import React from 'react';
 
 const Piece = ( { val } ) => {
 
+
+  // piece 1 color
+  // piece 2 color
 
 
   return (
